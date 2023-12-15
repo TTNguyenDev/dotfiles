@@ -19,6 +19,7 @@ return {
       },
     },
   },
+  -- Need to move these config into different file
   {
     "nvim-telescope/telescope.nvim",
     optional = true,

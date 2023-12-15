@@ -17,9 +17,11 @@ source $ZSH/oh-my-zsh.sh
 
 alias vim=nvim
 alias vi=nvim
+alias bat=cat
 neofetch
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
@@ -31,4 +33,18 @@ export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 ibus-daemon -drx
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+if [ -z "$TMUX" ]
+then
+    tmux attach -t TMUX || tmux new -s TMUX
+fi
+
+# rust cfg
+source "$HOME/.cargo/env"
+
+# pnpm
+export PNPM_HOME="/home/chris/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

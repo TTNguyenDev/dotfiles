@@ -38,6 +38,10 @@ then
     tmux attach -t TMUX || tmux new -s TMUX
 fi
 
+# go cfg
+export PATH=$PATH:~/go/bin
+export PATH="$PATH:$(go env GOPATH)/bin"
+
 # rust cfg
 source "$HOME/.cargo/env"
 
@@ -48,3 +52,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+xset r rate 200 30
+export BROWSER=brave
+export EDITOR=nvim
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
